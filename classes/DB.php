@@ -51,6 +51,7 @@ class DB{
     }
 
 
+    #Understand this method
 
     public function action($action, $table, $where = array()){
         if(count($where) == 3){
@@ -73,6 +74,55 @@ class DB{
 
     public function get($table, $where){
         return $this->action('SELECT *', $table, $where);
+    }
+
+    public function insert($table, $fields = array()){
+        #if(count($fields)){ #understand why you can remove this (#10, 10.30)
+            $keys = array_keys($fields);
+            $values = '';
+            $x = 1;
+
+            #loops through each field and adds a ,
+            #can't just do "?," since it would add one on the last one
+            foreach($fields as $field) {
+                $values .= "?";
+                if($x <count($fields)){ #count is a built in function?
+                    $values .= ', ';
+                }
+                $x++;
+            }
+
+            #die($set);
+
+        $sql = "INSERT INTO users (`" . implode('`, `', $keys) . "`) VALUES ({$values})";
+            #echo $sql; #example of the sql
+            if($this->query($sql,$fields)->error()){
+                return True;
+            }
+        #}
+        return false;
+            
+    }
+
+    public function update($table, $id, $fields){
+        $set = '';
+        $x = 1;
+
+        foreach($fields as $name => $value){ #what's $value?
+            $set .= "{$name} = ?";
+            if($x < count($fields)){
+                $set .= ', ';
+            }
+            $x++;
+        }
+        #die($set);
+
+        $sql = "UPDATE {$table} SET {$set} WHERE userID = {$id}";
+        #echo $sql;
+        if(!$this->query($sql, $fields)->error()){
+            return true;
+        }
+        return false;
     }
 
     public function delete($table, $where){
