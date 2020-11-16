@@ -20,7 +20,7 @@ Purpose:    xxx
 How:        $path set to null so that we can check if the path exists
             $config = $GLOBALS['config']; set config to array that exists inside $GLOBALS['config] from inside init.php
             $path = explode('/', $path); splits the string being passed from the __construct inside DB.php 
-
+            loop through each of these splits, check if it exists and set 
             Methods:    explode()
             Params:     xxx
 */
@@ -29,9 +29,10 @@ How:        $path set to null so that we can check if the path exists
             $config = $GLOBALS['config'];
             $path = explode('/', $path); #slash is included in the passed param $path
             
-            foreach($path as $bit){
-                if(isset($config[$bit])){
-                    $config = $config[$bit];
+            #print_r($path) = Array ([0]=>mysql[1]=>host)
+            foreach($path as $bit){ #as means replace digit with 
+                if(isset($config[$bit])){#first loop: check if 'mysql' exists within config, second loop, check if host exists within config
+                    $config = $config[$bit];#if it does we're setting config to mysql
                 }
             }
             return ($config);
