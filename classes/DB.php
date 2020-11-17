@@ -1,15 +1,33 @@
 <?php
+
+/*
+General purpose and attributes of class:
+    Database wrapper
+    PDO
+    Singleton Pattern
+    Since constructor is private, it can only be instantiated through static function getInstance()
+
+*/
+
+
 class DB{
 
-    private static $_instance = null; 
-    private $_pdo, 
-            $_query, 
+    private static $_instance = null; #Stores an instance of the DB
+    private $_pdo, #where we store the pdo object
+            $_query, #last query executed
             $_error = false, 
-            $_results, 
-            $_count = 0;
+            $_results, #store results from query
+            $_count = 0; #store the count from the query
 
-    #Runned when class is instantiated
-    #string, username, psw. string defines the database handler you want to connect to
+            
+    /*
+    Purpose:    Creates an instance of the class if one doesnt already exist
+                Singleton pattern that checks if there already exists an object from this class
+                This makes it so that we don't have to constantly be reconnecting to our DB
+    How:                   
+    Methods:   
+    Params: 
+    */
     private function __construct(){
         try{
             $this->_pdo = new PDO('mysql:host=' . Config::get('mysql/host') . ';dbname=' .Config::get('mysql/db'), Config::get('mysql/username'), Config::get('mysql/password')); 
@@ -19,9 +37,16 @@ class DB{
         }
     }
 
-    #Singleton pattern that checks if there already exists an object from this class
-    #This makes it so that we don't have to constantly be reconnecting to our DB
-    #Method creates an instance of the class if one doesnt already exist
+   
+    /*
+    Purpose:    Creates an instance of the class if one doesnt already exist
+                Singleton pattern that checks if there already exists an object from this class
+                This makes it so that we don't have to constantly be reconnecting to our DB
+                Sets the $_instance 
+                How:                   
+    Methods:   
+    Params: 
+    */
     public static function getInstance(){
         if(!isset(self::$_instance)){
             self::$_instance = new DB();
