@@ -17,6 +17,7 @@ $GLOBALS['config'] = array(
     )
 );
 
+#autoloads classes we need
 #$ class represents the class we're trying to access
 #spl = standard php library
 #classes

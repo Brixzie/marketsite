@@ -2,14 +2,31 @@
     require_once 'core/init.php';
 
 
-    $userUpdate = DB::getInstance()->update('users', 3,array(
+
+
+    #3 is the id of the user
+    $userUpdate = DB::getInstance()->userUpdate('users', 3,array(
         'psw' => '9123',
         'name' => 'Donald'
     ));
 
 
+    #Own variation
+    $user = DB::getInstance()->query("SELECT * FROM users");
+    $results = $user->results();
+    $x=0;
+    while($x<$user->count()){
+        echo ($results[$x]->name);
+        $x++;
+    }
+
+
+
+
+
+    
 /*
-    $userInsert = DB::getInstance()->insert('users', array(
+    $userInsert = DB::getInstance()->userInsert('users', array(
         'name' => 'Dale',
         'email' => 'Dale@D.g',
         'psw' => '123'
