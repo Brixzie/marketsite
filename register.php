@@ -12,7 +12,7 @@
             ),
             'password' => array(
                 'required' => true,
-                'min => 6'
+                'min' => 6
             ),
             'password_again' => array(
                 'required' => true,
@@ -25,10 +25,11 @@
             )
             ));
 
-        if($validation->passed()){
+        if($validate->passed()){
             //register user
+            echo "Passed";
         }    else{
-            //outputs errors
+            print_r($validate->errors());
         }
         #echo Input::get('username');
     }
@@ -45,7 +46,8 @@
 <form action="" method="post">
     <div class="field">
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" value="" autocomplete="off">
+        <!-- understand escape() Also understand how it keeps data showing up in fields -->
+        <input type="text" name="username" id="username" value="<?php echo escape(Input::get('username')); ?>" autocomplete="off">
     </div>
     <div class= "field">
         <label for="password">Choose a password</label>

@@ -109,7 +109,7 @@ class DB{
 
             if(in_array($operator, $operators)){ #check if $operator is inside the $operator array
                 $sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?";
-                
+                #$sql = "{$action} FROM '{$table}' WHERE {$field} {$operator}  '{$value}'";
                 if(!$this->query($sql, array($value))->error()){ #questionmark gets replaced by $value. If not error proceed
                     return $this;
                 }

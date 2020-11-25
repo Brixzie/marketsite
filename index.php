@@ -6,8 +6,8 @@
 
     #3 is the id of the user
     $userUpdate = DB::getInstance()->userUpdate('users', 3,array(
-        'psw' => '9123',
-        'name' => 'Donald'
+        'password' => '9123',
+        'username' => 'Donald'
     ));
 
 
@@ -16,7 +16,7 @@
     $results = $user->results();
     $x=0;
     while($x<$user->count()){
-        echo ($results[$x]->name);
+        echo ($results[$x]->username);
         $x++;
     }
 
