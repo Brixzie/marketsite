@@ -1,40 +1,45 @@
 <?php
     require 'core/init.php';
 
-    if(Input::exists()){
-        $validate = new Validate();
-        $validation = $validate->check($_POST, array(
-            'username' => array(
-                'required' => true,
-                'min' => 2,
-                'max' => 20,
-                'unique' => 'users'
-            ),
-            'password' => array(
-                'required' => true,
-                'min' => 6
-            ),
-            'password_again' => array(
-                'required' => true,
-                'matches' =>'password'
-            ),
-            'name' => array(
-                'required' => true,
-                'min' => 2,
-                'max' => 50
-            )
-            ));
+    #var_dump(Token::check(Input::get('token')));
 
-        if($validate->passed()){
-            //register user
-            echo "Passed";
-        }    else{
-            #print_r($validate->errors());
-            foreach($validate->errors() as $error){
-                echo $error, '<br>';
+    if(Input::exists()){
+        if(Token::check(Input::get('token'))){
+            #echo "I am allowed to run";
+            $validate = new Validate();
+            $validation = $validate->check($_POST, array(
+                'username' => array(
+                    'required' => true,
+                    'min' => 2,
+                    'max' => 20,
+                    'unique' => 'users'
+                ),
+                'password' => array(
+                    'required' => true,
+                    'min' => 6
+                ),
+                'password_again' => array(
+                    'required' => true,
+                    'matches' =>'password'
+                ),
+                'name' => array(
+                    'required' => true,
+                    'min' => 2,
+                    'max' => 50
+                )
+                ));
+
+            if($validate->passed()){
+                //register user
+                //echo "Passed";
+            }    else{
+                #print_r($validate->errors());
+                foreach($validate->errors() as $error){
+                    echo $error, '<br>';
+                }
             }
+            #echo Input::get('username');
         }
-        #echo Input::get('username');
     }
     /*
     if(Input::exists()){
@@ -67,6 +72,8 @@
         <input type="text" name="name" value="" id="name">
     </div>
 
-    <input type="submit" value="Register">
+    <!-- Token is unique to the users page -->
+    <input type = "hidden" name = "token" value ="<?php echo Token::generate(); ?>">
+    <input type = "submit" value = "Register">
 
 </form>
