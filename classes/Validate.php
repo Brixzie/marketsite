@@ -12,6 +12,14 @@ class Validate{
         $this->_db = DB::getInstance();
     }
 
+
+    /*
+    Called from: register.php
+    Purpose: checks the content of $_post as well as an array containing all the rules         
+    How:     compares the two                      
+    Methods:   
+    Params: 
+    */
     public function check($source, $items = array()){
         foreach($items as $item => $rules){
             foreach($rules as $rule => $rule_value){
@@ -21,6 +29,8 @@ class Validate{
                 #check requirements 
                 #=== identical operator, checks both value and data type
                 $value = $source[$item];
+                #understand this
+                $item = escape($item);
             
                 if($rule === 'required' && empty($value)){
                     $this->addError("{$item} is required");

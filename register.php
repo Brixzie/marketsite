@@ -29,7 +29,10 @@
             //register user
             echo "Passed";
         }    else{
-            print_r($validate->errors());
+            #print_r($validate->errors());
+            foreach($validate->errors() as $error){
+                echo $error, '<br>';
+            }
         }
         #echo Input::get('username');
     }
