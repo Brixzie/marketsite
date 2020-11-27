@@ -1,9 +1,15 @@
 <?php
     require_once 'core/init.php';
+/*
+    echo 'test';
+    echo (Session::exists('success'));*/
+if(Session::exists('success')){
+    echo Session::flash('success');
+}
 
 
 
-
+/*
     #3 is the id of the user
     $userUpdate = DB::getInstance()->userUpdate('users', 3,array(
         'password' => '9123',
@@ -20,7 +26,7 @@
         $x++;
     }
 
-
+*/
 
 
 

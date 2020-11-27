@@ -30,8 +30,27 @@
                 ));
 
             if($validate->passed()){
-                //register user
-                //echo "Passed";
+                $user = new User();
+                echo $salt = Hash::salt(32);
+                die();
+                
+                try{
+
+                    $user->create(array(
+                        'username' => '',
+                        'password' => '',
+                        'name' => '',
+                        'username' => '',
+                        'email' => '',
+                        'salt' => '',
+                        'joined' => ''
+                    ));
+
+                }catch(Exception $e){
+                    die($e->getMessage());
+                }
+                Session::flash('success', 'You registered successfully!');
+                header('Location: index.php');
             }    else{
                 #print_r($validate->errors());
                 foreach($validate->errors() as $error){
