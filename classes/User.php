@@ -6,8 +6,9 @@ class User{
         $this->_db = DB::getInstance();
     }
 
-    public function create($fields){
-        if($this->_db->insert('users', $fields)){
+    #Ability to create user
+    public function create($fields = array()){
+        if(!$this->_db->userInsert('users', $fields)){
             throw new Exception('There was a problem creating the account');
         }
     }

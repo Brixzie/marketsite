@@ -35,7 +35,15 @@ class DB{
         }
     }
 
-   
+    public function newUpdate($table, $sql){
+        query($sql, $fields);
+    }
+
+    public function newInsert($table, $sql){
+        query($sql, $fields);
+    }
+
+
     /*
     Purpose:    Creates an instance of the class if one doesnt already exist
                 Singleton pattern that checks if there already exists an object from this class
@@ -153,7 +161,8 @@ class DB{
 
             foreach($fields as $field) {
                 $values .= "?";
-                if($x <count($fields)){ #count is a built in function?
+                #if there's another argument we add another ','
+                if($x < count($fields)){ #count is a built in function?
                     $values .= ', ';
                 }
                 $x++;
@@ -161,12 +170,17 @@ class DB{
 
             #die($set);
             #specific for users?
+
+            #update this to $table
+            #$sql = "INSERT INTO $table (`" . implode('`, `', $keys) . "`) VALUES ({$values})";
             $sql = "INSERT INTO users (`" . implode('`, `', $keys) . "`) VALUES ({$values})";
-            #echo $sql; #example of the sql
+            echo $sql; #example of the sql
+
             if(!$this->query($sql,$fields)->error()){
                 return True;
             }
         #}
+        echo "This went wrong in userInsert!!<br>";
         return false;
             
     }
@@ -185,7 +199,7 @@ class DB{
         #die($set);
 
         $sql = "UPDATE {$table} SET {$set} WHERE userID = {$id}";
-        #echo $sql;
+        echo $sql;
         if(!$this->query($sql, $fields)->error()){
             return true;
         }

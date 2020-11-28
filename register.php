@@ -31,22 +31,18 @@
 
             if($validate->passed()){
                 $user = new User();
-                echo $salt = Hash::salt(32);
-                die();
-                
+                #echo $salt = Hash::salt(32);
+                #die();
                 try{
-
                     $user->create(array(
-                        'username' => '',
-                        'password' => '',
-                        'name' => '',
-                        'username' => '',
-                        'email' => '',
-                        'salt' => '',
-                        'joined' => ''
+                        'username' => Input::get('username'),
+                        'password' => Input::get('password'),
+                        'name' => Input::get('name')
+                        #'email' => Input::get('email')
                     ));
 
                 }catch(Exception $e){
+                    echo "Now in the catch of register.php <br>";
                     die($e->getMessage());
                 }
                 Session::flash('success', 'You registered successfully!');
