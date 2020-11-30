@@ -174,7 +174,7 @@ class DB{
             #update this to $table
             #$sql = "INSERT INTO $table (`" . implode('`, `', $keys) . "`) VALUES ({$values})";
             $sql = "INSERT INTO users (`" . implode('`, `', $keys) . "`) VALUES ({$values})";
-            echo $sql; #example of the sql
+            #echo $sql; #example of the sql
 
             if(!$this->query($sql,$fields)->error()){
                 return True;
@@ -199,7 +199,7 @@ class DB{
         #die($set);
 
         $sql = "UPDATE {$table} SET {$set} WHERE userID = {$id}";
-        echo $sql;
+        #echo $sql;
         if(!$this->query($sql, $fields)->error()){
             return true;
         }

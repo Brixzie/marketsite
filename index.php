@@ -3,6 +3,12 @@
 /*
     echo 'test';
     echo (Session::exists('success'));*/
+
+
+
+    
+//Helps flash if there exists a sessions 
+//(shows a message such as "Registered" only once)    
 if(Session::exists('success')){
     echo Session::flash('success');
 }
@@ -12,7 +18,7 @@ if(Session::exists('success')){
 
 
 
-
+/*
 echo "<c>This is the query made from the userUpdate method</c><br>";
 //This works
 $userUpdate = DB::getInstance()->userUpdate('users', 3,array(
@@ -29,7 +35,7 @@ $userInsert = DB::getInstance()->userInsert('users', array(
     'email' => 'Dale@D.g',
     'password' => '123123'
 ));
-
+*/
 /*
 $userInsert = DB::getInstance()->userInsert('users', array(
     'username' => 'adf',

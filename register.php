@@ -37,16 +37,18 @@
                     $user->create(array(
                         'username' => Input::get('username'),
                         'password' => Input::get('password'),
-                        'name' => Input::get('name')
+                        #'name' => Input::get('email')
                         #'email' => Input::get('email')
                     ));
 
                 }catch(Exception $e){
-                    echo "Now in the catch of register.php <br>";
+                    #echo "Now in the catch of register.php <br>";
                     die($e->getMessage());
                 }
                 Session::flash('success', 'You registered successfully!');
-                header('Location: index.php');
+                #header('Location: index.php');
+                #Redirect::to(404);
+                Redirect::to('index.php');
             }    else{
                 #print_r($validate->errors());
                 foreach($validate->errors() as $error){
