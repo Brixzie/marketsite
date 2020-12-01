@@ -2,7 +2,32 @@
 require_once 'core/init.php';
 
 if(Input::exists()){
-    echo 'Test';
+    if(Token::check(Input::get('token'))){
+        
+        $validate = new Validate();
+        $validation = $validate->check($_POST, array(
+            'username' => array('required' => true),
+            'password' => array('required' => true)
+        ));
+        
+        if($validate->passed()){
+            //log user in
+            #echo "Logged in";
+            $user = new User();
+            $login = $user->login(Input::get('username'), Input::get('password'));
+            
+            if($login){
+                echo 'Success';
+            }else {
+                echo 'Failed login';
+            }
+        
+        }else{
+            foreach($validate->errors() as $error){
+                echo $error, '<br>';
+            }
+        }
+    }
 }
 
 ?>
@@ -15,7 +40,7 @@ if(Input::exists()){
 
     <div class="field">
         <label for="password">Password</label>
-        <input type="text" name="username" id="username" autocomplete="off">
+        <input type="text" name="password" id="password" autocomplete="off">
     </div>
 
     <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">

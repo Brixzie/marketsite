@@ -6,7 +6,7 @@
 
 
 
-    
+echo Session::get(Config::get('session/session_name'));
 //Helps flash if there exists a sessions 
 //(shows a message such as "Registered" only once)    
 if(Session::exists('success')){
