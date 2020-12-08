@@ -6,17 +6,22 @@
 
 
 
-echo Session::get(Config::get('session/session_name'));
+#echo Session::get(Config::get('session/session_name'));
+
 //Helps flash if there exists a sessions 
 //(shows a message such as "Registered" only once)    
-if(Session::exists('success')){
-    echo Session::flash('success');
+if(Session::exists('home')){
+    echo '<p>' . Session::flash('home') . '</p>';
 }
 
+$user = new User(); //Current user
+#echo $user->data()->username;
 
-
-
-
+if($user->isLoggedIn()){
+    echo "Logged in";
+}else{
+    echo "false";
+}
 
 /*
 echo "<c>This is the query made from the userUpdate method</c><br>";

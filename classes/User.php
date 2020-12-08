@@ -2,13 +2,33 @@
 class User{
     private $_db,
             $_data,
-            $_sessionName;
+            $_sessionName,
+            $_isLoggedin;
 
+    #Creates instance to DB &
+    
     public function __construct($user = null){
         $this->_db = DB::getInstance();
-
         $this->_sessionName = Config::get('session/session_name');
+        
+        if(!$user){
+            if(Session::exists($this->_sessionName)){
+                $user = Session::get($this->_sessionName);
+                #echo $user;
+                #echo $this->find($user);
+
+                if($this->find($user)){
+                    echo "found it";
+                    $this->_isLoggedin = true;
+                }else{
+                    //Process logout
+                }
+            }
+        } else{
+            $this->find($user);
+        }
     }
+
 
     #Ability to create user
     public function create($fields = array()){
@@ -19,7 +39,7 @@ class User{
 
     public function find($user = null){
         if($user){
-            $field = (is_numeric($user)) ? 'id' : 'username';//this would fail on users who only use digits for username
+            $field = (is_numeric($user)) ? 'userID' : 'username';//this would fail on users who only use digits for username
             $data = $this->_db->get('users', array($field, '=', $user));
             if($data->count()){
                 $this->_data = $data->first(); 
@@ -42,7 +62,11 @@ class User{
         return false;
     }
 
-    private function data(){
+    public function data(){
         return $this->_data;
+    }
+
+    public function isLoggedIn(){
+        return $this->_isLoggedin;
     }
 }
