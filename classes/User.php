@@ -18,7 +18,7 @@ class User{
                 #echo $this->find($user);
 
                 if($this->find($user)){
-                    echo "found it";
+                    #echo "found it";
                     $this->_isLoggedin = true;
                 }else{
                     //Process logout
@@ -47,7 +47,7 @@ class User{
             }
         }
     }
-    public function login($username = null, $password = null){
+    public function login($username = null, $password = null, $remember){
         
         $user = $this->find($username);
         if($user){
@@ -56,10 +56,18 @@ class User{
                 echo "Success!";
                 #set session
                 Session::put($this->_sessionName, $this->data()->userID);
+                
+                if($remember){
+                    
+                }
                 return true;
             }
         }
         return false;
+    }
+
+    public function logout(){
+        Session::delete($this->_sessionName);
     }
 
     public function data(){

@@ -1,5 +1,18 @@
 <?php
     require_once 'core/init.php';
+
+
+    ?>
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+</div>
+    <?php
+
+
+
 /*
     echo 'test';
     echo (Session::exists('success'));*/
@@ -16,12 +29,20 @@ if(Session::exists('home')){
 
 $user = new User(); //Current user
 #echo $user->data()->username;
+?>
 
+<form>
+<input type="button" value="Login" onclick="window.location.href='http://localhost/rymla3/login.php'" />
+<input type="button" value="Logout" onclick="window.location.href='http://localhost/rymla3/logout.php'" />
+</form>
+
+<?php
 if($user->isLoggedIn()){
     echo "Logged in";
 }else{
-    echo "false";
+    echo "Not logged in";
 }
+
 
 /*
 echo "<c>This is the query made from the userUpdate method</c><br>";
