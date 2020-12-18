@@ -33,12 +33,15 @@
                 $user = new User();
                 #echo $salt = Hash::salt(32);
                 #die();
+                $date = date('h/m/d/Y', time());
                 try{
                     $user->create(array(
                         'username' => Input::get('username'),
                         'password' => Input::get('password'),
-                        #'name' => Input::get('email')
-                        #'email' => Input::get('email')
+                        'email' => Input::get('email'),
+                        'created' => $date
+                        #'name' => Input::getd('email')
+                        #
                     ));
 
                 }catch(Exception $e){
@@ -87,6 +90,9 @@
     <div class="field">
         <label for="name">Enter your name</label>
         <input type="text" name="name" value="" id="name">
+    <div class="field">
+        <label for="email">Enter your email</label>
+        <input type="text" name="email" value="" id="email">
     </div>
 
     <!-- Token is unique to the users page -->

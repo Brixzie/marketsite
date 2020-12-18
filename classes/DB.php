@@ -148,6 +148,12 @@ class DB{
 
 
     #specific for users?
+     /*
+    Purpose:           
+    How:                   
+    Methods:   
+    Params: 
+    */
     public function userInsert($table, $fields = array()){
         #if(count($fields)){ #understand why you can remove this (#10, 10.30)
             $keys = array_keys($fields);
@@ -156,8 +162,6 @@ class DB{
 
             #loops through each field and adds a ,
             #can't just do "?," since it would add one on the last one
-
-            
 
             foreach($fields as $field) {
                 $values .= "?";
@@ -171,16 +175,14 @@ class DB{
             #die($set);
             #specific for users?
 
-            #update this to $table
-            #$sql = "INSERT INTO $table (`" . implode('`, `', $keys) . "`) VALUES ({$values})";
-            $sql = "INSERT INTO users (`" . implode('`, `', $keys) . "`) VALUES ({$values})";
+            $sql = "INSERT INTO $table (`" . implode('`, `', $keys) . "`) VALUES ({$values})";
             #echo $sql; #example of the sql
 
             if(!$this->query($sql,$fields)->error()){
                 return True;
             }
         #}
-        echo "This went wrong in userInsert!!<br>";
+        echo "This went wrong in userInsert()!!<br>";
         return false;
             
     }

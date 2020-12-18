@@ -4,14 +4,15 @@
 
     ?>
 <div class="topnav">
-  <a class="active" href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
+  <a class="active" href="http://localhost/rymla3/index.php">Index</a>
+  <a href="http://localhost/rymla3/register.php">Register</a>
+  <a href="http://localhost/rymla3/login.php">Login</a>
   <a href="#about">About</a>
 </div>
     <?php
 
-
+$date = date('h/m/d/Y', time());
+echo $date;
 
 /*
     echo 'test';
