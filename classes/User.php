@@ -51,9 +51,6 @@ class User{
         
         $user = $this->find($username);
         if($user){
-            #This is obviously always gonna match, need to check with hash and salt in future
-            ##echo $this->data()->password;
-            #if($this->data()->password == $this->data()->password){
             if($this->data()->password == Hash::make($password, $this->data()->salt)){
                 echo "Success!";
                 #set session
