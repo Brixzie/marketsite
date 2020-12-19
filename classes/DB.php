@@ -154,7 +154,7 @@ class DB{
     Methods:   
     Params: 
     */
-    public function userInsert($table, $fields = array()){
+    public function insert($table, $fields = array()){
         #if(count($fields)){ #understand why you can remove this (#10, 10.30)
             $keys = array_keys($fields);
             $values = '';
@@ -175,14 +175,14 @@ class DB{
             #die($set);
             #specific for users?
 
-            $sql = "INSERT INTO $table (`" . implode('`, `', $keys) . "`) VALUES ({$values})";
+            $sql = "INSERT INTO {$table} (`" . implode('`, `', $keys) . "`) VALUES ({$values})";
             #echo $sql; #example of the sql
 
             if(!$this->query($sql,$fields)->error()){
                 return True;
             }
         #}
-        echo "This went wrong in userInsert()!!<br>";
+        echo "This went wrong in insert()!!<br>";
         return false;
             
     }
