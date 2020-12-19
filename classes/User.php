@@ -52,18 +52,28 @@ class User{
         $user = $this->find($username);
         if($user){
             #This is obviously always gonna match, need to check with hash and salt in future
-            if($this->data()->password == $this->data()->password){
+            ##echo $this->data()->password;
+            #if($this->data()->password == $this->data()->password){
+            if($this->data()->password == Hash::make($password, $this->data()->salt)){
                 echo "Success!";
                 #set session
                 Session::put($this->_sessionName, $this->data()->userID);
                 
                 if($remember){
-                    
+                    #$hash = Hash::unique();
+                    #$hashCheck = 
                 }
                 return true;
             }
         }
         return false;
+    }
+
+
+    public function testing(){
+        $password = 'mary123';
+        $user = $this->find('mary123'); //This sets _data to the finding
+        echo Hash::make($password, $this->data()->salt);
     }
 
     public function logout(){

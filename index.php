@@ -11,8 +11,13 @@
 </div>
     <?php
 
-$date = date('h/m/d/Y', time());
-echo $date;
+#$salt = Hash::salt(32);
+#echo $salt;
+
+
+#$testo = new User();
+#echo '<br>';
+#$testo->testing();
 
 /*
     echo 'test';

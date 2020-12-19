@@ -31,15 +31,18 @@
 
             if($validate->passed()){
                 $user = new User();
-                #echo $salt = Hash::salt(32);
+                
                 #die();
                 $date = date('h/m/d/Y', time());
+                $salt = Hash::salt(32);
                 try{
                     $user->create(array(
                         'username' => Input::get('username'),
-                        'password' => Input::get('password'),
+                        'password' => Hash::make(Input::get('password'), $salt),
+                        #'password' => Input::get('password'),
                         'email' => Input::get('email'),
-                        'created' => $date
+                        'created' => $date,
+                        'salt' => $salt
                         #'name' => Input::getd('email')
                         #
                     ));
