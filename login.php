@@ -1,3 +1,9 @@
+<div class="topnav">
+  <a class="active" href="http://localhost/rymla3/index.php">Index</a>
+  <a href="http://localhost/rymla3/register.php">Register</a>
+  <a href="http://localhost/rymla3/login.php">Login</a>
+  <a href="http://localhost/rymla3/testing.php">Testing</a>
+</div>
 <?php
 require_once 'core/init.php';
 

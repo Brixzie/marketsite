@@ -49,49 +49,97 @@ class User{
             }
         }
     }
-    public function login($username = null, $password = null, $remember){
+    public function login($username = null, $password = null, $remember = false){
 
-        $user = $this->find($username);
-        if($user){
-            if($this->data()->password == Hash::make($password, $this->data()->salt)){
-                echo "Success!";
-                #set session
-                Session::put($this->_sessionName, $this->data()->userID);
-                
-                #Create a cookie
-                if($remember){
-                    #Redirect::to('register.php');
-                    $hash = Hash::unique(); # creates a unique hash
-                    $hashCheck = $this->_db->get('user_session', array('user_id', '=', $this->data()->id));
-                    #This will be triggered as long as it's not stored in the database
-                    if(!$hashCheck->count()){
-                        
-                        #This far it works
-                        #why isn't it create?
-                        $this->_db->insert('user_session',array(
-                            'user_id' => $this->data()->id,
-                            'hash' => $hash
-                        ));
-                    }else{
-                        $hash = $hashCheck->first()->hash;
+        #Finds the username passed into the method
+        
+
+        if(!$username && !$password && $this->exists()){
+            Session::put($this->_sessionName, $this->data()->userID);
+        }else{
+            $user = $this->find($username);
+
+            if($user){
+                #check that passed password matches
+                if($this->data()->password == Hash::make($password, $this->data()->salt)){
+                    ?>
+                    <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    This is an alert box.
+                    </div>
+                    
+                    <?php
+
+                    #set session
+                    Session::put($this->_sessionName, $this->data()->userID);
+                    
+                    #Create a cookie
+                    if($remember){
+                        #Redirect::to('register.php');
+                        $hash = Hash::unique(); # creates a unique hash
+                        $hashCheck = $this->_db->get('user_session', array('user_id', '=', $this->data()->userID));
+                        #This will be triggered as long as it's not stored in the database
+                        if(!$hashCheck->count()){
+
+                            #why isn't it create() (sanitize?)? Only for manual input?
+                            $this->_db->insert('user_session',array(
+                                'user_id' => $this->data()->userID,
+                                'hash' => $hash
+                            ));
+                        }else{
+                            $hash = $hashCheck->first()->hash;
+                        }
+                        Cookie::put($this->_cookieName, $hash, Config::get('remember/cookie_expiry'));
                     }
-                    Cookie::put($this->_cookieName, $hash, Config::get('remember/cookie_expiry'));
+                    return true;
                 }
-                return true;
             }
         }
         return false;
     }
 
+    public function exists(){
+        return(!empty($this->_data)) ? true : false;
+    }
 
+
+    public function testUserInsert(){
+        $date = date('h/m/d/Y', time());
+        $salt = Hash::salt(32);
+        $values = array(
+                        'username' => "Dorryyy",
+                        'password' => "Dorryyy",
+                        'email' => "Dorryyy",
+                        'created' => $date,
+                        'salt' => $salt
+                    );
+       $this->_db->insert("users", $values);
+    }
+
+    public function testUserSessionInsert(){
+        $values = array(
+                        'user_id' => 1,
+                        'hash' => 5
+                    );
+       $this->_db->insert("user_session", $values);
+    }
     public function testing(){
         $password = 'mary123';
         $user = $this->find('mary123'); //This sets _data to the finding
         echo Hash::make($password, $this->data()->salt);
     }
 
+    public function simpleMessage(){
+        echo "simpleMessage";
+    }
+
     public function logout(){
+        #Deletes cookie in DB
+        $this->_db->delete('users_session', array('user_id', '=', $this->data()->userID));
+        #Deletes session
         Session::delete($this->_sessionName);
+        #Deletes cookie on computer
+        Cookie::delete($this->_cookieName);
     }
 
     public function data(){

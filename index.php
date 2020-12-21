@@ -7,7 +7,7 @@
   <a class="active" href="http://localhost/rymla3/index.php">Index</a>
   <a href="http://localhost/rymla3/register.php">Register</a>
   <a href="http://localhost/rymla3/login.php">Login</a>
-  <a href="#about">About</a>
+  <a href="http://localhost/rymla3/testing.php">Testing</a>
 </div>
     <?php
 
@@ -48,8 +48,12 @@ if($user->isLoggedIn()){
 }else{
     echo "Not logged in";
 }
+?>
 
 
+
+
+<?php
 /*
 echo "<c>This is the query made from the userUpdate method</c><br>";
 //This works

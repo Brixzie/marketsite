@@ -1,3 +1,9 @@
+<div class="topnav">
+  <a class="active" href="http://localhost/rymla3/index.php">Index</a>
+  <a href="http://localhost/rymla3/register.php">Register</a>
+  <a href="http://localhost/rymla3/login.php">Login</a>
+  <a href="http://localhost/rymla3/testing.php">Testing</a>
+</div>
 <?php
     require 'core/init.php';
 
@@ -39,12 +45,9 @@
                     $user->create(array(
                         'username' => Input::get('username'),
                         'password' => Hash::make(Input::get('password'), $salt),
-                        #'password' => Input::get('password'),
                         'email' => Input::get('email'),
                         'created' => $date,
                         'salt' => $salt
-                        #'name' => Input::getd('email')
-                        #
                     ));
 
                 }catch(Exception $e){
@@ -90,9 +93,6 @@
         <input type="password" name="password_again" id="password_again">
     </div>
 
-    <div class="field">
-        <label for="name">Enter your name</label>
-        <input type="text" name="name" value="" id="name">
     <div class="field">
         <label for="email">Enter your email</label>
         <input type="text" name="email" value="" id="email">
