@@ -102,7 +102,13 @@ class User{
         return(!empty($this->_data)) ? true : false;
     }
 
-
+    public function testSpaceInsert(){
+        $date = date('h/m/d/Y', time());
+        $values = array(
+                        'objName' => "lokal"
+                    );
+       $this->_db->insert("objects", $values);
+    }
     public function testUserInsert(){
         $date = date('h/m/d/Y', time());
         $salt = Hash::salt(32);

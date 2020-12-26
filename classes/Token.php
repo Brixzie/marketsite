@@ -3,6 +3,7 @@
 
         #Generates token
         public static function generate(){
+            #Config::get returns 
             return Session::put(Config::get('session/token_name'), md5(uniqid()));
         }
 
@@ -14,7 +15,7 @@
                 Session::delete($tokenName);
                 return True;
             }
-            echo "This happened";
+            echo "Token check() failed";
             return false;
         }
     }

@@ -1,18 +1,11 @@
 <?php
     require_once 'core/init.php';
+?>
+
+<?php include('templates/navbar.php'); ?>
 
 
-    ?>
-<div class="topnav">
-  <a class="active" href="http://localhost/rymla3/index.php">Index</a>
-  <a href="http://localhost/rymla3/register.php">Register</a>
-  <a href="http://localhost/rymla3/login.php">Login</a>
-  <a href="http://localhost/rymla3/testing.php">Testing</a>
-</div>
     <?php
-
-#$salt = Hash::salt(32);
-#echo $salt;
 
 
 #$testo = new User();
@@ -22,9 +15,6 @@
 /*
     echo 'test';
     echo (Session::exists('success'));*/
-
-
-
 #echo Session::get(Config::get('session/session_name'));
 
 //Helps flash if there exists a sessions 
@@ -34,103 +24,36 @@ if(Session::exists('home')){
 }
 
 $user = new User(); //Current user
+
+
+
 #echo $user->data()->username;
 ?>
+<style>
+body {
+  
 
+}
+div {
+  width: 100%;
+  height: 400px;
+  background-image: url('images/background.png');
+  background-size: cover;
+  border: 1px solid red;
+}
+
+}
+</style>
 <form>
 <input type="button" value="Login" onclick="window.location.href='http://localhost/rymla3/login.php'" />
 <input type="button" value="Logout" onclick="window.location.href='http://localhost/rymla3/logout.php'" />
 </form>
 
 <?php
-if($user->isLoggedIn()){
-    echo "Logged in";
+if($user->isLoggedIn()){?>
+    <p>Hello <?php echo escape($user->data()->userID); ?></p>
+<?php
 }else{
     echo "Not logged in";
 }
 ?>
-
-
-
-
-<?php
-/*
-echo "<c>This is the query made from the userUpdate method</c><br>";
-//This works
-$userUpdate = DB::getInstance()->userUpdate('users', 3,array(
-    'password' => '9123',
-    'username' => 'Donald'
-));
-
-
-
-echo "<c>This is the query made from the userInsert method</c><br>";
-//This works
-$userInsert = DB::getInstance()->userInsert('users', array(
-    'username' => 'DDonald',
-    'email' => 'Dale@D.g',
-    'password' => '123123'
-));
-*/
-/*
-$userInsert = DB::getInstance()->userInsert('users', array(
-    'username' => 'adf',
-    'name' => 'Dale',
-    'email' => 'Dale@D.g',
-    'password' => '123123321'
-));
-*/
-/*
-    #3 is the id of the user
-    $userUpdate = DB::getInstance()->userUpdate('users', 3,array(
-        'password' => '9123',
-        'username' => 'Donald'
-    ));
-
-
-    #Own variation
-    $user = DB::getInstance()->query("SELECT * FROM users");
-    $results = $user->results();
-    $x=0;
-    while($x<$user->count()){
-        echo ($results[$x]->username);
-        $x++;
-    }
-
-*/
-
-
-
-    
-/*
-    $userInsert = DB::getInstance()->userInsert('users', array(
-        'name' => 'Dale',
-        'email' => 'Dale@D.g',
-        'psw' => '123'
-    ));
-*/
-
-
-
- /*
-    $user = DB::getInstance()->query("SELECT * FROM users");
-    
-    
-    //$user ->get('users', array('name', '=', 'Dorcy'));
-    
-    if(!$user->count()){
-        echo 'No users';
-    }else{
-            echo $user->first()->email;
-    }
-    */
-
-
-/*
-    if(!$user->count()){
-        echo 'No users';
-    }else{
-        foreach($user->results() as $user){
-            echo $user->name, '<br>';
-        }
-    }*/
