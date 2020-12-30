@@ -24,7 +24,6 @@ if(Input::exists()){
             }else {
                 echo 'Failed login';
             }
-        
         }else{
             foreach($validate->errors() as $error){
                 echo $error, '<br>';

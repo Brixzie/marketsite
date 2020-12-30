@@ -11,7 +11,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
          
          <!-- Bootstrap CSS -->
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        
         <title>Rymla</title>
 </head>
 </html>
@@ -23,7 +24,6 @@
         <a class="navbar-brand" href="index.php">
           <img src="rymla.logo_.pink_.001-e1589285503472.png" width="70" height="30" class="d-inline-block align-top" alt="" loading="lazy">
         </a>
-        
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
             <li class="nav-item">
@@ -39,7 +39,6 @@
                 </li>
 
               <?php }?>
-              
               <?php
                 if($user->isLoggedIn()){ ?>
                   <li class="nav-item">
