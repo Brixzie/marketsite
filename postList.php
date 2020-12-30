@@ -5,37 +5,40 @@
 
 <?php
     $test = new User();
+
+    #Implement verification
+    #Can I implement create method from user, what's the benefit of using it?
     if($test->isLoggedIn() ){
         if(Input::exists() && Token::check(Input::get('token'))){
-            $test->testSpaceInsert();
+            $test->testSpaceInsert(Input::get('objName'), Input::get('price'), Input::get('sqm'));
         }
     ?>
     <body>
         <br>
-
-        <p>A listing contains ID, user ID, name, location, space, price, time</p>
+        <h2>List your space</h2>
+        <p>Please enter information about the space that you're interested in renting out</p>
 
         <form action="" method="post">
   
-        <div class= "field">
-            <label for="password">Choose a password</label>
-            <input type="password" name="password" id="password">
-        </div>
+            <div class= "field">
+                <label for="objName">Name of listing</label>
+                <input type="text" name="objName" id="objName">
+            </div>
 
-        <div class= "field">
-            <label for="password_again">Repeat password</label>
-            <input type="password" name="password_again" id="password_again">
-        </div>
+            <div class="field">
+                <label for="sqm">Size of storage</label>
+                <input type="number" name="sqm" value="">
+            </div>
 
-        <div class="field">
-            <label for="email">Enter your email</label>
-            <input type="text" name="email" value="" id="email">
-        </div>
-        <!-- Token is unique to this page -->
-        <input type = "hidden" name = "token" value ="<?php echo Token::generate(); ?>">
-        <input type = "submit" value = "Register"> 
+            <div class="field">
+                <label for="price">Price</label>
+                <input type="number" name="price" value="">
+            </div>
+            <!-- Token is unique to this page -->
+            <input type = "hidden" name = "token" value ="<?php echo Token::generate(); ?>">
+            <input type = "submit" value = "Register"> 
 
-    </form>
+        </form>
     </body>
 <?php
 }else{

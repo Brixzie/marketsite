@@ -15,6 +15,9 @@ General purpose of class:
 class Config {
 
 /*
+
+Gets a hold of the values that exists in $GLOBALS inside init.php
+
 Name:       get()
 Purpose:    xxx
 How:        $path set to null so that we can check if the path exists
@@ -30,9 +33,9 @@ How:        $path set to null so that we can check if the path exists
             $path = explode('/', $path); #slash is included in the passed param $path
             
             #print_r($path) = Array ([0]=>mysql[1]=>host)
-            foreach($path as $bit){ #as means replace digit with 
-                if(isset($config[$bit])){#first loop: check if 'mysql' exists within config, second loop, check if host exists within config
-                    $config = $config[$bit];#if it does we're setting config to mysql
+            foreach($path as $bit){ 
+                if(isset($config[$bit])){
+                    $config = $config[$bit];
                 }
             }
             return ($config);

@@ -88,6 +88,7 @@ class DB{
                     $x++;
                 }
             }
+            
             if($this->_query->execute()){ #executes the query
                 $this->_results = $this->_query->fetchAll(PDO::FETCH_OBJ);
                 $this->_count = $this->_query->rowCount();
@@ -95,7 +96,6 @@ class DB{
                 $this->_error = true;
             }
         }
-
         return $this; #returns current object
     }
 
@@ -118,7 +118,8 @@ class DB{
             if(in_array($operator, $operators)){ #check if $operator is inside the $operator array
                 $sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?";
                 #$sql = "{$action} FROM '{$table}' WHERE {$field} {$operator}  '{$value}'";
-                if(!$this->query($sql, array($value))->error()){ #questionmark gets replaced by $value. If not error proceed
+                #echo $sql;
+                if(!$this->query($sql, array($value))->error()){ #questionmark gets replaced by $value. If no error proceed
                     return $this;
                 }
             }

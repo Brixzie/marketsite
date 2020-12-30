@@ -1,0 +1,93 @@
+       <div class="topnav">
+        <a class="active" href="http://localhost/rymla3/index.php">Index</a>
+        <a href="register.php">Register</a>
+        <a href="login.php">Login</a>
+        <!--<a href="testing.php">Testing</a>-->
+        <?php
+        if($user->isLoggedIn()){
+                ?>
+                <a href="searchlist.php">Search listings</a>
+                <a href="postlist.php">Post listing</a>
+                <a href="yourListings.php">Your listings</a>
+                <a class="btn btn-primary" href="http://localhost/rymla3/logout.php" role="button">Logout</a>
+                <!--<input type="button" value="Logout" onclick="window.location.href='http://localhost/rymla3/logout.php'" />
+                <?php
+        }?>
+        
+
+
+        </div>
+</html>
+
+<html>
+<style>
+.jumbotron{
+    background-color:#2E2D88;
+    color:white;
+}
+/* Adds borders for tabs */
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+.nav-tabs {
+    margin-bottom: 0;
+}
+</style>
+</html>
+
+<html>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script> 
+</body>
+</html>
+
+
+
+        <div class="topnav">
+        <a class="active" href="http://localhost/rymla3/index.php">Index</a>
+        <a href="register.php">Register</a>
+        <a href="login.php">Login</a>
+        <!--<a href="testing.php">Testing</a>-->
+        <?php
+        if($user->isLoggedIn()){
+                ?>
+                <a href="searchlist.php">Search listings</a>
+                <a href="postlist.php">Post listing</a>
+                <a href="yourListings.php">Your listings</a>
+                <a class="btn btn-primary" href="http://localhost/rymla3/logout.php" role="button">Logout</a>
+                <!--<input type="button" value="Logout" onclick="window.location.href='http://localhost/rymla3/logout.php'" />
+                <?php
+        }?>
+        
+
+
+        </div>
+</html>
+
+<html>
+<style>
+.jumbotron{
+    background-color:#2E2D88;
+    color:white;
+}
+/* Adds borders for tabs */
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+.nav-tabs {
+    margin-bottom: 0;
+}
+</style>
+</html>
+
+<html>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script> 
+</body>
+</html>

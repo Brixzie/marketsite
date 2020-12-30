@@ -3,12 +3,9 @@
     include('templates/navbar.php'); 
 ?>
 <?php
-    
-
     #var_dump(Token::check(Input::get('token')));
-
     if(Input::exists()){
-        if(Token::check(Input::get('token'))){
+        if(Token::check(Input::get('token'))){ #returns true/false
             #echo "I am allowed to run";
             $validate = new Validate();
             $validation = $validate->check($_POST, array(
@@ -96,7 +93,9 @@
         <input type="text" name="email" value="" id="email">
     </div>
 
-    <!-- Token is unique to the users page -->
+    <!-- Token is unique to the users page 
+         Generates a token
+    -->
     <input type = "hidden" name = "token" value ="<?php echo Token::generate(); ?>">
     <input type = "submit" value = "Register">
 

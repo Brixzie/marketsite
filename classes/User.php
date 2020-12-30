@@ -102,10 +102,20 @@ class User{
         return(!empty($this->_data)) ? true : false;
     }
 
-    public function testSpaceInsert(){
+    #public function testSearchSpace(){
+        #takes params from checkboxes on site. This goes through if statement
+        #$this->_db->get("users", array('available', '=', '0'));  
+    #    $this->_db->get("users", array('username', '=', 'something'));  
+    #}
+
+    public function testSpaceInsert($name, $price, $sqm){
         $date = date('h/m/d/Y', time());
         $values = array(
-                        'objName' => "lokal"
+                        'userID' => $this->data()->userID,
+                        'objName' => $name,
+                        'sqm' => $sqm,
+                        'price' => $price
+
                     );
        $this->_db->insert("objects", $values);
     }
