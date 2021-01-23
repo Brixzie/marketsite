@@ -33,28 +33,36 @@ if(Input::exists()){
 }
 
 ?>
-
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Email address</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-</div>
 <form action="" method="post">
-    <div class="field">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" autocomplete="off">
-    </div>
+   
+        <div class="password">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"></label>
+                <input type="text" class="form-control" name="username" id="exampleFormControlInput1" placeholder="email">
+            </div>
+            <!--<div class="field">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" autocomplete="off">
+            </div>-->
 
-    <div class="field">
-        <label for="password">Password</label>
-        <input type="text" name="password" id="password" autocomplete="off">
-    </div>
+            <div class="field">
+                <div class="mb-3">
+                    <label for="password" class="form-label"></label>
+                    <input type="text" class="form-control" name="password" id="password" placeholder="Lösenord">
+                </div>
+                <!--<label for="password">Password</label>
+                <input type="text" name="password" id="password" autocomplete="off">-->
 
-    <div class="field">
-        <label for="remember">
-        <input type="checkbox" name="remember" id="remember"> Remember me
-        </label>
-    </div>
+                <div class="mb-3">
+                    <label for="remember">
+                        <input type="checkbox" name="remember" id="remember"> Remember me
+                    </label>
+            </div>
 
-    <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-    <input type="submit" value="Log in">
+
+            <input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+            <input type="submit" value="Log in">
+        </div>
+
+
 </form>

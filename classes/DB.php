@@ -99,6 +99,32 @@ class DB{
         return $this; #returns current object
     }
 
+    public function query2($sql, $params = array()){
+        $this->_error = false;
+        $this->_query = $this->_pdo->prepare($sql);
+
+        $sizeParams = sizeof($params);
+        
+        #Ascii for 'a'
+        $chrNmb = 97;
+        for($x = 0; $x < $sizeParams; $x++){
+            $this->_query->bindParam(chr($chrNmb),$params[$x]);
+            $chrNmb++;
+        }
+        
+        if($this->_query->execute()){ #executes the query
+            $this->_results = $this->_query->fetchAll(PDO::FETCH_OBJ);
+            $this->_count = $this->_query->rowCount();
+        }else{
+            $this->_error = true;
+        }
+    
+
+        return $this; #returns current object
+    }
+
+
+
 
     /*
     Purpose:           
@@ -126,6 +152,8 @@ class DB{
         }
         return false;
     }
+
+    
     
     /*
     Purpose: Passes 'SELECT * as action parameter to action'           
@@ -187,6 +215,30 @@ class DB{
         return false;
             
     }
+
+
+    public function renterUpdate($table, $id, $fields){
+        $set = '';
+        $x = 1;
+
+        foreach($fields as $name => $value){ #what's $value?
+            $set .= "{$name} = ?";
+            if($x < count($fields)){
+                $set .= ', ';
+            }
+            $x++;
+        }
+        #die($set);
+
+        $sql = "UPDATE {$table} SET {$set} WHERE id = {$id}";
+
+        #echo $sql;
+        if(!$this->query($sql, $fields)->error()){
+            return true;
+        }
+        return false;
+    }
+
 
     public function userUpdate($table, $id, $fields){
         $set = '';

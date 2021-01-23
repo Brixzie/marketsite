@@ -11,9 +11,6 @@ class Redirect{
                             exit();
                         break;
                     }
-                    
-
-                    
                 }
             }
             header('Location: ' . $location);

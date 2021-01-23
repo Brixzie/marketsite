@@ -108,14 +108,31 @@ class User{
     #    $this->_db->get("users", array('username', '=', 'something'));  
     #}
 
-    public function testSpaceInsert($name, $price, $sqm){
+ 
+    public function stopRenting($objID){
+        $values = array(
+            'renterID' => null,
+            'available' => 0
+        );
+        $this->_db->renterUpdate('objects', $objID, $values);
+    }
+
+    public function rent($objID){
+        $values = array(
+            'renterID' => $this->data()->userID,
+            'available' => 1
+        );
+        $this->_db->renterUpdate('objects', $objID, $values);
+    }
+
+    public function testSpaceInsert($name, $price, $sqm, $image){
         $date = date('h/m/d/Y', time());
         $values = array(
                         'userID' => $this->data()->userID,
                         'objName' => $name,
                         'sqm' => $sqm,
-                        'price' => $price
-
+                        'price' => $price,
+                        'images' => $image
                     );
        $this->_db->insert("objects", $values);
     }
@@ -139,6 +156,14 @@ class User{
                     );
        $this->_db->insert("user_session", $values);
     }
+
+    public function testFileInsert($name){
+        $values = array(
+                        'images' => $name
+                    );
+       $this->_db->insert("user_session", $values);
+    }
+
     public function testing(){
         $password = 'mary123';
         $user = $this->find('mary123'); //This sets _data to the finding

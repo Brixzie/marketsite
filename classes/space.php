@@ -8,6 +8,10 @@ class Space{
         }
     }
 
+    public function rent(){
+        
+    }
+
 }
 
 
