@@ -28,7 +28,7 @@
         <div class="addTopContainer">
 
         <div class="box-2">
-            <h3><b>Skapa annons!</b></h3>
+            <h3><b>Create add!</b></h3>
             <p>Pleae specify details about the add</p>
         </div>
 
@@ -54,11 +54,11 @@
 
                 <div class="box-2">
                     <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                    <label for="vehicle1">Vattentillgång</label>
+                    <label for="vehicle1">Access to water</label>
                     <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
                     <label for="vehicle1">Garage</label>
                     <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                    <label for="vehicle1">Nyckel</label>
+                    <label for="vehicle1">Key</label>
                     <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
                     <label for="vehicle1">24/7 tillgång</label><br>
                 </div>

@@ -48,7 +48,7 @@ if(Input::exists()){
             <div class="field">
                 <div class="mb-3">
                     <label for="password" class="form-label"></label>
-                    <input type="text" class="form-control" name="password" id="password" placeholder="Lösenord">
+                    <input type="text" class="form-control" name="password" id="password" placeholder="Password">
                 </div>
                 <!--<label for="password">Password</label>
                 <input type="text" name="password" id="password" autocomplete="off">-->

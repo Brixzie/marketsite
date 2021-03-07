@@ -30,11 +30,11 @@ $user = new User();
     }
 ?>
 
-<h1>Dina uppgifter</h1>
-<p>Namn:<?php echo $user->data()->username;?>
-<br>Epost:<?php echo $user->data()->email;?>
+<h1>Your information</h1>
+<p>Name:<?php echo $user->data()->username;?>
+<br>Email:<?php echo $user->data()->email;?>
 </p>
-<h1>Objekt du hyr ut</h1>
+<h1>Objects you're renting out</h1>
 <?php
 $result = $result->get("objects", array('userID', '=', $user->data()->userID));
 
@@ -58,10 +58,10 @@ if(!$result->count()){
                 ?>
 
 
-                <p>Pris:<?php echo $result->price; ?><br>Yta:<?php echo $result->sqm; ?><br>Plats:<br>Från datum:</p>
+                <p>Price:<?php echo $result->price; ?><br>Space:<?php echo $result->sqm; ?><br>Place:<br>Available from:</p>
                 <form action="" method="post">
                     <input type="hidden" name="objID" value="<?php echo $result->id ?>"> 
-                    <input type="submit" name="removeOwn" value="Ta bort objekt">
+                    <input type="submit" name="removeOwn" value="Remove object">
 
             
                 </form>
@@ -97,10 +97,10 @@ if(!$result->count()){
                 ?>
 
 
-                <p>Pris:<?php echo $result->price; ?><br>Yta:<?php echo $result->sqm; ?><br>Plats:<br>Från datum:</p>
+                <p>Price:<?php echo $result->price; ?><br>Space:<?php echo $result->sqm; ?><br>Place:<br>Available from:</p>
                 <form action="" method="post">
                     <input type="hidden" name="objID" value="<?php echo $result->id ?>"> 
-                    <input type="submit" name="stopRenting" value="Sluta hyra">
+                    <input type="submit" name="stopRenting" value="Stop renting">
             
                 </form>
 

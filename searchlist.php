@@ -24,7 +24,7 @@
         
         <form action="" method="post">
             <div class="field">
-                <label for="sqm">Område</label>
+                <label for="sqm">Area</label>
                 <input type="number" name="sqm" value="">
             </div>
 
@@ -32,7 +32,7 @@
                 <label for="car">Garage</label>
                 <input type="checkbox" id="car" name="car" value="car">
                 <br>
-                <label for="vehicle1">Vattentillgång</label>
+                <label for="vehicle1">Access to water</label>
                 <input type="checkbox" id="vehicle1" name="water" value="Water">
                 
 
@@ -135,14 +135,14 @@
                                     <div class="text-container">
                                         <h5>Stockholm</h5>
                                         <h4><b><?php echo $result->objName; ?></b></h4>
-                                        <p>Yta:<?php echo $result->sqm; ?><br>Plats:<br>Från datum:</p>
+                                        <p>Space:<?php echo $result->sqm; ?><br>Area:<br>Available from:</p>
                                         <h5><b><?php echo $result->price; ?></b>/month</h5>
                                     </div>
                                     
                                     
                                     <form action="" method="post">
                                         <input type="hidden" name="objID" value="<?php echo $result->id ?>"> 
-                                        <input type="submit" name="rent" value="Titta på annons">
+                                        <input type="submit" name="rent" value="Inspect add">
                                 
                                     </form>
                                     
@@ -185,7 +185,7 @@
                     ?>
                            
                            <div class="box-1">
-                                
+                             
                                 <?php if($result->images != null){
                                     $imageName = "images/uploads/" . $result->images;
                                     ?>
@@ -202,14 +202,14 @@
                                 <div class="text-container">
                                     <h5>Stockholm</h5>
                                     <h4><b><?php echo $result->objName; ?></b></h4>
-                                    <p>Yta:<?php echo $result->sqm; ?><br>Plats:<br>Från datum:</p>
+                                    <p>Space:<?php echo $result->sqm; ?><br>Area:<br>Available from:</p>
                                     <h5><b><?php echo $result->price; ?></b>/month</h5>
                                 </div>
                                 
                                 
                                 <form action="" method="post">
                                     <input type="hidden" name="objID" value="<?php echo $result->id ?>"> 
-                                    <input type="submit" name="rent" value="Titta på annons">
+                                    <input type="submit" name="rent" value="Inspect add">
                             
                                 </form>
                                 
@@ -217,6 +217,7 @@
                 <?php   
                     }
                 ?>
+
   
             </div>
             <?php

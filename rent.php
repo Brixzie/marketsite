@@ -49,20 +49,24 @@
 
                         <!-- Make sure user doesn't own add and is not renting it-->
                         <?php
-                            $userID = $user->data()->userID;
-                            $testy = $result->userID;
-                            #if userID doesn't match userID in object record
-                            if($userID != $testy){
-                                ?>
-                                <form action="" method="post">
-                                    <input type="submit" name="pay" value="Rent">
-                                </form>
-                                <?php
-                            }elseif($result->available != 0){
-                                echo "Otur, annons redan uthyrd :/";
-                            }else{
-                                echo "Din egen annons";
+                            if($user->isLoggedIn()){
+                                $userID = $user->data()->userID;
+                                $testy = $result->userID;
+                                #if userID doesn't match userID in object record
+                                if($userID != $testy){
+                                    ?>
+                                    <form action="" method="post">
+                                        <input type="submit" name="pay" value="Rent">
+                                    </form>
+                                    <?php
+                                }elseif($result->available != 0){
+                                    echo "Otur, annons redan uthyrd :/";
+                                }else{
+                                    echo "Din egen annons";
+                                }
+
                             }
+                            
                       
                         ?>
                         <hr class="itemDivider">

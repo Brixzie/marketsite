@@ -78,6 +78,13 @@
         <!-- understand escape() Also understand how it keeps data showing up in fields -->
         <input type="text" name="username" id="username" value="<?php echo escape(Input::get('username')); ?>" autocomplete="off">
     </div>
+
+    <div class="field">
+        <label for="name">Username</label>
+        <!-- understand escape() Also understand how it keeps data showing up in fields -->
+        <input type="text" name="name" id="name" value="<?php echo escape(Input::get('name')); ?>" autocomplete="off">
+    </div>
+
     <div class= "field">
         <label for="password">Choose a password</label>
         <input type="password" name="password" id="password">

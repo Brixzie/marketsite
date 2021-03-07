@@ -10,7 +10,7 @@
         <!-- "make the content render at the width of the device." -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
          
-        <link rel="shortcut icon" href="images/logo2.ico">
+        <link rel="shortcut icon" href="images/logo3.ico">
         <!-- Bootstrap 4.5 CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <!-- Style CSS -->
@@ -18,7 +18,7 @@
         <!-- Google Fonts -->
         <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">-->
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-        <title>Rymla</title>
+        <title>STRGMRKT</title>
 </head>
 </html>
 
@@ -49,23 +49,23 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<!--<li class="nav-item"><a href="index.php" class="nav-link">Start</a></li>-->
-					<li class="nav-item"><a href="searchlist.php" class="nav-link">Sök utrymme</a></li>
+					<li class="nav-item"><a href="searchlist.php" class="nav-link">Look for Storage</a></li>
           <?php
                 if(!$user->isLoggedIn()){?>
-                <li class="nav-item"><a href="login.php" class="nav-link">Logga in</a></li>
-                <li class="nav-item"><a href="register.php" class="nav-link">Registrera Dig</a></li>
+                <li class="nav-item"><a href="login.php" class="nav-link">Log in</a></li>
+                <li class="nav-item"><a href="register.php" class="nav-link">Register</a></li>
           <?php }?>
           <?php
                 if($user->isLoggedIn()){ ?>
 
-                <li class="nav-item"><a href="postList.php" class="nav-link">Annonsera utrymme</a></li>
+                <li class="nav-item"><a href="postList.php" class="nav-link">Create an Add</a></li>
                 <!--<li class="nav-item"><a href="yourListings.php" class="nav-link">Dina utrymmen</a></li>-->
-                <li class="nav-item"><a href="profile.php" class="nav-link">Profil</a></li>
-                <li class="nav-item"><a href="profile.php" class="nav-link">Meddelanden</a></li>
+                <li class="nav-item"><a href="profile.php" class="nav-link">Profile</a></li>
+                <li class="nav-item"><a href="profile.php" class="nav-link">Messages</a></li>
                   
           <?php }?>
 
-					<li class="nav-item"><a href="about.php" class="nav-link">Om oss</a></li>
+					<li class="nav-item"><a href="about.php" class="nav-link">About us</a></li>
 				</ul>
 			</div>
 		</div>
@@ -83,6 +83,8 @@
 	<!-- Font Awesome -->
 	<script src="js/all.min.js"></script>
 
+  <!-- Own JS Scripts -->
+  <!--<script src="js/ownScripts.js"></script>-->
 	<!-- End Script Source Files -->
 </body>
 
